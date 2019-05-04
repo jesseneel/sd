@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>StoreData Inner Service | Главная</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="css/shards.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+  
+    <div id="barba-wrapper">
+        <div class="barba-container">
+  <!-- notification container -->
+  <div class=" alert-danger notification text-center" id="notification" role="alert" aria-live="assertive"
+  aria-relevant="text" hidden>
+</div>
+
+<div class="rellax" data-rellax-speed="7">
+  <p class="header mt-5">STD inner services <br> (beta 0.4.3)</p>
+</div>
+
+<!-- noscript -->
+<noscript>
+  <style>
+    .container {
+      display: none;
+    }
+  </style>
+
+
+  <div class="noscript-wrapper">
+    <div ontouchstart="this.classList.toggle('hover');">
+      <div class="noscript-container">
+        <div class="noscript-front" style="background-image: url(https://unsplash.it/500/500/)">
+          <div class="noscript-inner">
+            <p>Отключен JavaScript или используется блокировка сценариев Noscript</p>
+            <span class="noscript-description">Наведите чтобы узнать подробности</span>
+          </div>
+        </div>
+        <div class="noscript-back">
+          <div class="noscript-inner noscript-info">
+            <p>Для корректной работы страниц включите использование JavaScript в настройках своего браузера и
+              перезагрузите страницу.</p>
+              <ul>
+                <li>[Chrome]: "Customize and control Google Chrome" -> "Settings" -> "Show advanced settings" ->
+                  "Privacy" -> "Content settings" -> "JavaScript" -> "Allow all sites to run JavaScript"</li>
+                  <li>[Opera]: "Menu" -> "Settings" -> "Websites" -> "Allow all sites to run JavaScript"</li>
+                  <li>[Safari]: "Edit" -> "Preferences" -> "Security" -> "Web content" -> "Enable JavaScript"</li>
+                  <li>[Mozila]: "Menu" -> "Settings" -> "Content" -> "Enable JavaScript"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </noscript>
+  
+
+    <div class="container mt-5 mb-5">
+      <h2 class="mt-5 mb-5">Сервисы</h2>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card custom-card">
+            <img class="card-img-top custom-img" src="assets/img/key-page.jpg" alt="Закрытые стойки" />
+            <div class="card-body">
+              <h4 class="card-title">StoreData | CR</h4>
+              <p class="card-text custom-card__text">Список закрытых стоек</p>
+              <a href="#" class="btn btn-outline-dark btn-squared" data-toggle="modal" data-target="#closed-racks">Перейти</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-3">
+          <div class="card custom-card">
+            <img class="card-img-top custom-img" src="assets/img/cross-lenght.jpg" alt="StoreData Crossing Length" />
+            <div class="card-body">
+              <h4 class="card-title">StoreData | SLS</h4>
+              <p class="card-text custom-card__text">
+                Автоматический расчет длин между стойками
+              </p>
+              <a href="length-calc.html" class="btn btn-outline-dark btn-squared">Перейти</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-3">
+          <div class="card custom-card">
+            <img class="card-img-top custom-img" src="assets/img/cross-price.jpg" alt="StoreData Crossing Length" />
+            <div class="card-body">
+              <h4 class="card-title">StoreData | CP</h4>
+              <p class="card-text custom-card__text">
+                Расчет стоимости соединительных линий
+              </p>
+              <a href="crossing-price.html" class="btn btn-outline-dark btn-squared">Перейти</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-3">
+          <div class="card custom-card">
+            <img class="card-img-top custom-img" src="assets/img/technical-support.jpg" alt="StoreData Crossing Length" />
+            <div class="card-body">
+              <h4 class="card-title">StoreData | TSP</h4>
+              <p class="card-text custom-card__text">
+                Расчет услгу технической поддержки
+              </p>
+              <a href="technical-support.html" class="btn btn-outline-dark btn-squared">Перейти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h2 class="mt-5">Quick links:</h2>
+      
+      <div class="row mt-5">
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/asana.png" alt="StoreData Asana" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Asana</h4>
+              <p class="card-text">Внутренняя система дежурной службы</p>
+              <a href="https://app.asana.com/0/home/" class="btn btn-outline-light btn-squared" target="_blank">Перейти</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/otrs.png" alt="StoreData OTRS" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | OTRS</h4>
+              <p class="card-text">Система обработки заявок</p>
+              <a href="https://my.storedata.ru/otrs/index.pl" class="btn btn-outline-light btn-squared" target="_blank">Перейти</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/wiki.jpg" alt="StoreData Wiki" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Wiki</h4>
+              <p class="card-text">База знаний StoreData</p>
+              <a href="http://wiki.storedata.ru/" class="btn btn-outline-light btn-squared" target="_blank">Перейти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/rackspace.jpg" alt="StoreData Rackspace" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | RT</h4>
+              <p class="card-text">Система учета оборудования</p>
+              <a href="http://192.168.1.233/index.php?page=index&tab=default" class="btn btn-outline-light btn-squared"
+              target="_blank">Перейти</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/owncloud.jpg" alt="StoreData Owncloud" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Owncloud</h4>
+              <p class="card-text">Облачное хранилище StoreData</p>
+              <a href="https://192.168.1.33/" class="btn btn-outline-light btn-squared" target="_blank" data-toggle="tooltip">Перейти</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/megaplan.png" alt="StoreData Megaplan" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Megaplan</h4>
+              <p class="card-text">CRM система StoreData</p>
+              <a href="https://storedata.megaplan.ru/task/filter/all" class="btn btn-outline-light btn-squared" target="_blank"
+              data-toggle="tooltip">Перейти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/yandex-mail.png" alt="StoreData Mail" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Mail</h4>
+              <p class="card-text">Web версия почты</p>
+              <a href="https://mail.yandex.ru/" class="btn btn-outline-light btn-squared" target="_blank" data-toggle="tooltip">Перейти</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-white">
+            <img class="card-img" src="assets/img/slack.jpg" alt="StoreData Slack Chanel" />
+            <div class="card-img-overlay">
+              <h4 class="card-title">StoreData | Slack</h4>
+              <p class="card-text">Внутренний канал Slack StoreData</p>
+              <a href="https://storedata.slack.com/messages/" class="btn btn-outline-light btn-squared" target="_blank" data-toggle="tooltip">Перейти</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <!-- Модальное окно -->
+      <div class="modal fade" id="closed-racks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLabel">
+              StoreData | Closed Racks
+            </h5>
+          </div>
+          <div class="modal-body">
+            <!-- Форма поиска -->
+            <div class="row mb-4">
+              <div class="col-sm-4 offset-md-4">
+                <div class="input-group input-group-seamless">
+                  <input type="text" id="find-key" class="form-control" aria-label="Text input with checkbox"
+                  placeholder="Поиск" />
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <i class="fa fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Форма поиска -->
+            
+            <table class="table text-center" id="locked-racks">
+              <caption>
+                Стойки PCI DSS отмечены
+                <span class="lokki">красным</span>
+              </caption>
+              <caption>
+                Стойки, по которым также необходимо отзваниваться отмечены
+                <span class="callback">голубым</span>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                  <th>Ключница</th>
+                  <th>Стойка</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>01/01/01</td>
+                  <th>1</th>
+                  <td>01/01/02</td>
+                  <th>1</th>
+                  <td>01/01/03</td>
+                  <th>1</th>
+                  <td class="lokki">01/01/04 сек.2</td>
+                  <th>1</th>
+                  <td>01/01/06</td>
+                  <th>1</th>
+                  <td class="lokki">01/01/05 сек.1</td>
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <td class="lokki">01/01/05 сек.2</td>
+                  <th>1</th>
+                  <td class="lokki">01/01/05 сек.3</td>
+                  <th>1</th>
+                  <td class="lokki">01/01/05 сек.4</td>
+                  <th>1</th>
+                  <td>01/02/01</td>
+                  <th>1</th>
+                  <td>ЭМ</td>
+                  <th>1</th>
+                  <td>01/02/07</td>
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <td>01/02/08</td>
+                  <th>1</th>
+                  <td>01/02/09</td>
+                  <th>1</th>
+                  <td>01/03/08</td>
+                  <th>1</th>
+                  <td class="callback">01/05/06 Ласнет</td>
+                  <th>1</th>
+                  <td class="callback">01/05/09</td>
+                  <th>1</th>
+                  <td>01/06/03</td>
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <td>01/06/04</td>
+                  <th>1</th>
+                  <td>01/07/11</td>
+                  <th>1</th>
+                  <td class="lokki">01/08/03</td>
+                  <th>1</th>
+                  <td>01/08/07</td>
+                  <th>1</th>
+                  <td>01/08/11</td>
+                  <th>1</th>
+                  <td>01/08/12</td>
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <td>02/01/03</td>
+                  <th>1</th>
+                  <td>02/02/11</td>
+                  <th>1</th>
+                  <td>B8</td>
+                  <th>1</th>
+                  <td class="callback">D3</td>
+                  <th>2</th>
+                  <td>01/01/04</td>
+                  <th>2</th>
+                  <td class="lokki">01/01/04 сек.1</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td class="lokki">01/01/04 сек.3</td>
+                  <th>2</th>
+                  <td class="lokki">01/01/04 сек.4</td>
+                  <th>2</th>
+                  <td>01/07/11</td>
+                  <th>2</th>
+                  <td class="callback">01/07/12 ПСБ</td>
+                  <th>2</th>
+                  <td>01/08/11 запас.</td>
+                  <th>2</th>
+                  <td class="callback">01/07/12 запас. ПСБ</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>01/09/05</td>
+                  <th>2</th>
+                  <td>01/09/07 запас.</td>
+                  <th>2</th>
+                  <td>02/01/01</td>
+                  <th>2</th>
+                  <td>02/01/02</td>
+                  <th>2</th>
+                  <td>02/01/04</td>
+                  <th>2</th>
+                  <td>02/02/01</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>02/02/02</td>
+                  <th>2</th>
+                  <td>02/04/08</td>
+                  <th>2</th>
+                  <td>02/04/09</td>
+                  <th>2</th>
+                  <td>02/04/10</td>
+                  <th>2</th>
+                  <td>02/04/11</td>
+                  <th>2</th>
+                  <td>01/07/11 запас.</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>01/08/12 запас.</td>
+                  <th>2</th>
+                  <td class="lokki">01/03/01</td>
+                  <th>2</th>
+                  <td>01/02/04 сек.1</td>
+                  <th>2</th>
+                  <td>01/02/04 сек.2</td>
+                  <th>---</th>
+                  <td>---</td>
+                  <th>---</th>
+                  <td>---</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info btn-pill" data-dismiss="modal">
+              Закрыть
+            </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="whatsnew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Изменения текущей версии:</h5>
+        </div>
+        <div class="modal-body">
+          <p>Версия 0.2:</p>
+          <ul>
+            <li>Добавлена проверка активности интернет соединения;</li>
+            <li>Изменена формула расчета соединительных линий с учетом 20% НДС.</li>
+          </ul>
+          <p>Версия 0.2.2:</p>
+          <ul>
+            <li>Изменения UI;</li>
+            <li>Коррекция тарифной сетки и другие незначительные изменения.</li>
+          </ul>
+          <p>Версия 0.3:</p>
+          <ul>
+            <li>Добавлен обработчик отсутствия JS;</li>
+            <li>Добавлено gzip сжатие;</li>
+          </ul>
+          <p>Версия 0.4:</p>
+          <ul>
+            <li>Полностью изменена страница тех. поддержки;</li>
+          </ul>
+          <p>Версия 0.4.1:</p>
+          <ul>
+            <li>Добавлено меню навигации;</li>
+          </ul>
+          <p>Версия 0.4.2:</p>
+          <ul>
+            <li>Добавлены tooltips;</li>
+          </ul>
+          <p>Версия 0.4.3:</p>
+          <ul>
+            <li>Добавлена версия для печати страницы технической поддержки;</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark btn-squared" data-dismiss="modal">
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center mt-3">
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#whatsnew">
+              Patch note
+            </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <p class="copyright mb-2">StoreData Inner Services | &copy 2018</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- JavaScript Dependencies: jQuery, Popper.js, Bootstrap JS, Shards JS -->
+    <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="js/shards.min.js"></script>
+    <script src="js/rellax.min.js"></script>
+    
+    <script>
+      $(function () {
+        var lockedRacksGridHighlighter = ($selector => {
+          const HIGHTLIGHT_TAG = "strong";
+          let $cells = $selector.find("td");
+          
+          let opacityFn = value => (...$items) =>
+          $items.forEach($item => $item.css("opacity", value));
+          let hide = opacityFn(0.4);
+          let show = opacityFn(1);
+          let reset = s =>
+          s.replace(new RegExp("<\/?" + HIGHTLIGHT_TAG + ">", "g"), "");
+          let highlight = (s, term) =>
+          s.replace(
+          new RegExp(term, "g"),
+          $("<" + HIGHTLIGHT_TAG + ">").text(term)[0].outerHTML
+          );
+          
+          return {
+            highlight(term) {
+              hide($selector, $cells.text((i, s) => reset(s)));
+              if (term)
+              show(
+              $selector,
+              $cells
+              .filter(":contains(" + term + ")")
+              .html((i, s) => highlight(s, term))
+              );
+            },
+            reset(term) {
+              if (!term) show($selector, $cells);
+            }
+          };
+        })($("#locked-racks"));
+        
+        $("#find-key")
+        .on("input focus", function () {
+          lockedRacksGridHighlighter.highlight($(this).val());
+        })
+        .blur(function () {
+          lockedRacksGridHighlighter.reset($(this).val());
+        });
+      });
+    </script>
+    
+    <script>
+      var rellax = new Rellax('.rellax');
+    </script>
+    
+    <script src="js/connectivity-check.js"></script>
+    <script src="js/barba.min.js"></script>
+    <script src="js/def.js"></script>
+  </body>
+  
+  </html>

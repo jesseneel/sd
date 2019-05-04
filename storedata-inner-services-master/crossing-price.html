@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>StoreData Inner Service | Расчет стоимости СЛ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="css/shards.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/assets/favicon/manifest.json" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+    <div id="barba-wrapper">
+        <div class="barba-container">
+  <!-- notification container -->
+  <div class=" alert-danger notification text-center" id="notification" role="alert" aria-live="assertive"
+  aria-relevant="text" hidden></div>
+  
+  <nav>
+    <div class="nav-toggle"> 
+      <input type="checkbox" />
+      <span></span> <span></span> <span></span> 
+      <ul class="nav-menu">
+        <a href="index.html">
+          <li>На главную</li>
+        </a> <a href="length-calc.html">
+          <li>Расчет расстояний СЛ</li>
+        </a> <a href="crossing-price.html">
+          <li>Расчет стоимости СЛ</li>
+        </a> <a href="technical-support.html">
+          <li>Расчет услуг ТП</li>
+        </a>
+        <div class="row mt-5 text-center">
+          <div class="col-sm-12">
+            <p class="nav-info">STD | Inner Service</p>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- noscript -->
+  <noscript>
+    <style>
+      .container {
+        display: none;
+      }
+    </style>
+    <div class="noscript-wrapper">
+      <div ontouchstart="this.classList.toggle('hover');">
+        <div class="noscript-container">
+          <div class="noscript-front" style="background-image: url(https://unsplash.it/500/500/)">
+            <div class="noscript-inner">
+              <p>Отключен JavaScript или используется блокировка сценариев Noscript</p>
+              <span class="noscript-description">Наведите чтобы узнать подробности</span>
+            </div>
+          </div>
+          <div class="noscript-back">
+            <div class="noscript-inner noscript-info">
+              <p>Для корректной работы страниц включите использование JavaScript в настройках своего браузера и
+                перезагрузите страницу.</p>
+                <ul>
+                  <li>[Chrome]: "Customize and control Google Chrome" -> "Settings" -> "Show advanced settings" ->
+                    "Privacy" -> "Content settings" -> "JavaScript" -> "Allow all sites to run JavaScript"</li>
+                    <li>[Opera]: "Menu" -> "Settings" -> "Websites" -> "Allow all sites to run JavaScript"</li>
+                    <li>[Safari]: "Edit" -> "Preferences" -> "Security" -> "Web content" -> "Enable JavaScript"</li>
+                    <li>[Mozila]: "Menu" -> "Settings" -> "Content" -> "Enable JavaScript"</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </noscript>
+      
+      <div class="container mt-5 w-50">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <label for="cable-type">Тип кабеля:</label>
+              <select class="custom-select" id="cable-type" required>
+                <option value="" selected>Выбрать...</option>
+                <option value="utp5">UTP cat. 5e</option>
+                <option value="utp6">UTP cat. 6</option>
+                <option value="sm1">SM1</option>
+                <option value="sm2">SM2</option>
+                <option value="sm4">SM4</option>
+                <option value="sm8">SM8</option>
+                <option value="sm16">SM16</option>
+                <option value="mm1">MM1</option>
+                <option value="mm2">MM2</option>
+                <option value="mm4">MM4</option>
+                <option value="mm8">MM8</option>
+                <option value="mm16">MM16</option>
+                <option value="client">Предоставлен клиентом</option>
+              </select>
+              <small class="form-text text-muted">Выберите тип кабеля для продолжения расчета.</small>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <label for="cable-length">Длина:</label>
+              <input type="number" min="1" step="1" max="1000" class="form-control" id="cable-length" required />
+              <small class="form-text text-muted">В метрах. Минимальная длина 1 м., максимальная 1000 м., шаг 1 м.
+                Необходимо вводить только целые числа.
+              </small>
+            </div>
+          </div>
+          <label class="mt-3" for="cable-install-price">Стоимость прокладки патчкорда:</label>
+          <input type="number" class="form-control" id="cable-install-price" readonly />
+          <small class="form-text text-muted">Цена указана в рублях с НДС.</small>
+          <label class="mt-3" for="cable-material-price">Стоимость материалов:</label>
+          <input type="number" class="form-control" id="cable-material-price" readonly />
+          <small class="form-text text-muted">Цена указана в рублях с НДС.</small>
+          
+          <div id="connectors-container" class="d-none">
+            <label class="mt-3" for="cable-connectors-count">Количество коннекторов:</label>
+            <input type="number" class="form-control" id="cable-connectors-count" readonly />
+            <small class="form-text text-muted">
+              Цена указана в рублях с НДС. Поле актуально только для расчета
+              оптических патчкордов.
+            </small>
+            <label class="mt-3" for="cable-connectors-price">Стоимость оконцовки:</label>
+            <input type="number" class="form-control" id="cable-connectors-price" readonly />
+            <small class="form-text text-muted">
+              Цена указана в рублях с НДС. Поле актуально только для расчета
+              оптических патчкордов.
+            </small>
+          </div>
+          
+          <label class="mt-3" for="end-price">Итого:</label>
+          <input type="number" class="form-control" id="end-price" readonly />
+          <small class="form-text text-muted">Окончательная стоимость соединительной линии для клиента.</small>
+          <small class="form-text text-muted text-justify mt-3">
+            <ul>
+              <li>
+                Срок заказа и прокладки оптического патчкорда составляет не более
+                120 часов, витой пары 24 часа.
+              </li>
+              <li>
+                Стоимость услуги по организации соединительной линии между
+                Заказчиком и Третьей стороной состоит из стоимости необходимой
+                длины оптического кабеля, стоимости его оконцовки коннекторами,
+                стоимости его прокладки в модуле ЦОД и стоимости ежемесячного
+                обслуживания соединительной линии.
+              </li>
+              <li>
+                Стоимость услуги по организации соединительной линии между
+                телекоммуникационными стойками Заказчика состоит из стоимости
+                необходимой длины оптического кабеля, стоимости его оконцовки
+                коннекторами, а так же стоимости его прокладки в модуле ЦОД.
+              </li>
+              <li>
+                Ежемесячная плата за обслуживание такого патчкорда не взимается.
+                Стоимость ежемесячного обслуживания оптической линии - 1800 рублей
+                с НДС.
+              </li>
+            </ul>
+          </small>
+        </div>
+      </div>
+      
+      <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+      
+      <script>
+        $(function () {
+          const INSTALL_COEFFICIENT = 84;
+          const CONNECTOR_PRICE = 300;
+          
+          const $connectorsContainer = $("#connectors-container");
+          const $cableInstallPrice = $("#cable-install-price");
+          const $cableMaterialPrice = $("#cable-material-price");
+          const $cableConnectorsCount = $("#cable-connectors-count");
+          const $cableConnectorsPrice = $("#cable-connectors-price");
+          const $endPrice = $("#end-price");
+          
+          var CrossingType = {
+            init(materialPrice = 0, connectorCount = 0) {
+              this.materialPrice = materialPrice;
+              this.connectorCount = connectorCount;
+              return this;
+            },
+            calculateMaterialPrice(length = 0) {
+              return this.materialPrice * length;
+            },
+            calculateConnectorsPrice(price = 0) {
+              return this.connectorCount * price;
+            }
+          };
+          
+          const types = Object.create(null);
+          types.utp5 = Object.create(CrossingType).init(48);
+          types.utp6 = Object.create(CrossingType).init(54);
+          types.sm1 = types.mm1 = Object.create(CrossingType).init(80, 2);
+          types.sm2 = types.mm2 = Object.create(CrossingType).init(120, 4);
+          types.sm4 = types.mm4 = Object.create(CrossingType).init(170, 8);
+          types.sm8 = types.mm8 = Object.create(CrossingType).init(230, 16);
+          types.sm16 = types.mm16 = Object.create(CrossingType).init(290, 32);
+          types.client = Object.create(CrossingType).init();
+          
+          $("#cable-type, #cable-length").on("input", function () {
+            let cableType = $("#cable-type").val();
+            let cableLength = $("#cable-length").val();
+            
+            if (!cableType || !cableLength || !types[cableType]) {
+              reset();
+              return;
+            }
+            
+            update(types[cableType], cableLength);
+          });
+          
+          function update(type, length) {
+            let installPrice = length * INSTALL_COEFFICIENT;
+            let materialPrice = type.calculateMaterialPrice(length);
+            let connectorsPrice = type.calculateConnectorsPrice(CONNECTOR_PRICE);
+            let endPrice = installPrice + materialPrice + connectorsPrice;
+            
+            $cableInstallPrice.val(installPrice);
+            $cableMaterialPrice.val(materialPrice);
+            $cableConnectorsCount.val(type.connectorCount);
+            $cableConnectorsPrice.val(connectorsPrice);
+            $endPrice.val(endPrice);
+            
+            if (type.connectorCount) {
+              showConnectorsContainer();
+            } else {
+              hideConnectorsContainer();
+            }
+          }
+          
+          function reset() {
+            $cableInstallPrice.val("");
+            $cableMaterialPrice.val("");
+            $cableConnectorsCount.val("");
+            $cableConnectorsPrice.val("");
+            hideConnectorsContainer();
+            $endPrice.val("");
+          }
+          
+          function showConnectorsContainer() {
+            $connectorsContainer.removeClass("d-none");
+          }
+          
+          function hideConnectorsContainer() {
+            $connectorsContainer.addClass("d-none");
+          }
+        });
+      </script>
+      <script src="js/connectivity-check.js"></script>
+      <script src="js/barba.js"></script>
+      <script src="js/def.js"></script>
+    </body>
+    
+    </html>

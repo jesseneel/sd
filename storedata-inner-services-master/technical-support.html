@@ -1,0 +1,588 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>StoreData Inner Service | Расчет стоимости технической поддержки</title>
+    
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/material-bootstrap-wizard.css" rel="stylesheet" />
+</head>
+
+<body>
+        <div id="barba-wrapper">
+                <div class="barba-container">
+    
+    <!-- notification container -->
+    <div class=" alert-danger notification text-center" id="notification" role="alert" aria-live="assertive"
+    aria-relevant="text" hidden>
+</div>
+
+<nav>
+    <div class="nav-toggle"> 
+        <input type="checkbox" />
+        <span></span> <span></span> <span></span> 
+        <ul class="nav-menu">
+            <a href="index.html">
+                <li>На главную</li>
+            </a> <a href="length-calc.html">
+                <li>Расчет расстояний СЛ</li>
+            </a> <a href="crossing-price.html">
+                <li>Расчет стоимости СЛ</li>
+            </a> <a href="technical-support.html">
+                <li>Расчет услуг ТП</li>
+            </a>
+            <div class="row mt-5 text-center">
+                <div class="col-sm-12">
+                    <p class="nav-info">STD | Inner Service</p>
+                </div>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<!-- noscript -->
+<noscript>
+    <style>
+        .container {
+            display: none;
+        }
+    </style>
+    <div class="noscript-wrapper">
+        <div ontouchstart="this.classList.toggle('hover');">
+            <div class="noscript-container">
+                <div class="noscript-front" style="background-image: url(https://unsplash.it/500/500/)">
+                    <div class="noscript-inner">
+                        <p>Отключен JavaScript или используется блокировка сценариев Noscript</p>
+                        <span class="noscript-description">Наведите чтобы узнать подробности</span>
+                    </div>
+                </div>
+                <div class="noscript-back">
+                    <div class="noscript-inner noscript-info">
+                        <p>Для корректной работы страниц включите использование JavaScript в настройках своего браузера и
+                            перезагрузите страницу.</p>
+                            <ul>
+                                <li>[Chrome]: "Customize and control Google Chrome" -> "Settings" -> "Show advanced settings" ->
+                                    "Privacy" -> "Content settings" -> "JavaScript" -> "Allow all sites to run JavaScript"</li>
+                                    <li>[Opera]: "Menu" -> "Settings" -> "Websites" -> "Allow all sites to run JavaScript"</li>
+                                    <li>[Safari]: "Edit" -> "Preferences" -> "Security" -> "Web content" -> "Enable JavaScript"</li>
+                                    <li>[Mozila]: "Menu" -> "Settings" -> "Content" -> "Enable JavaScript"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
+        
+        <div class="image-container set-full-height" style="background-image: url('assets/img/background.jpg')">
+            
+            <!--  Секция генерации PDF  -->
+            <div class="row hidden">
+                <div id="printTitle" class="print-title text-center">Предварительный расчет стоимости услуг технической поддержки</div>
+            </div>
+            <a href="#" class="made-with-mk" id="printButton">
+                <div class="brand">PR:</div>
+                <div class="made-with">Версия для печати / PDF</div>
+            </a>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="wizard-container">
+                            <div class="card wizard-card" data-color="orange" id="wizard">
+                                <form action="" method="">
+                                    <div class="wizard-header">
+                                        <h3 class="wizard-title">
+                                            Техническая поддержка
+                                        </h3>
+                                    </div>
+                                    <div class="wizard-navigation">
+                                        <ul>
+                                            <li><a href="#service-section" data-toggle="tab">Стоимость работ</a></li>
+                                            <li><a href="#rate-info" data-toggle="tab">Описание тарифов</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="service-section">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h4 class="info-header text-center">Выберите тип и число оказываемых услуг:</h4>
+                                                </div>
+                                            </div>
+                                            <div id="printWrapper">
+                                                <div class="row type-row text-center">
+                                                    <div class="col-sm-2 col-sm-offset-5">За услугу:</div>
+                                                    <div class="col-sm-2">Количество:</div>
+                                                    <div class="col-sm-2">Стоимость:</div>
+                                                </div>
+                                                <div class="row price-row">
+                                                    <div class="col-sm-4 col-sm-offset-1">
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Тип услуги:</label>
+                                                            <select name="service-type" class="form-control service-type">
+                                                                <option selected=""></option>
+                                                                <option value="375">Замена комплектующих Hot Swap</option>
+                                                                <option value="750">Модернизация сервера</option>
+                                                                <option value="600">Настройка BIOS</option>
+                                                                <option value="750">Настройка сетевых устройств</option>
+                                                                <option value="1500">Установка OS</option>
+                                                                <option value="720">Монтаж/демонтаж сервера (1U)</option>
+                                                                <option value="1020">Монтаж/демонтаж сервера (2U)</option>
+                                                                <option value="1230">Монтаж/демонтаж сервера (3U)</option>
+                                                                <option value="1440">Монтаж/демонтаж сервера (4U)</option>
+                                                                <option value="3000">Нестандартная задача (час работ)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating cost-per-service-container">
+                                                            <input type="text" class="form-control cost-per-service" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating">
+                                                            <input type="number" min="1" max="50" step="1" class="form-control operation-count" pattern="^[0-9]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating pre-end-price-container">
+                                                            <input type="text" class="form-control pre-end-price" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+
+                                                <!--
+                                                <div class="row no-print">
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" id="packageRemove">
+                                                                Вывоз упаковочных материалов
+                                                            </label>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                                
+                                                
+                                                <div class="row package-row package-remove">
+                                                    <div class="col-sm-4 col-sm-offset-1">
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Тип услуги:</label>
+                                                            <select name="service-type" class="form-control service-type">
+                                                                <option selected=""></option>
+                                                                <option value="200">Вывоз упаковочных материалов (за единицу)</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating cost-per-service-container">
+                                                            <input type="text" class="form-control cost-per-service">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating">
+                                                            <input type="number" min="1" max="10" step="1" class="form-control operation-count" pattern="^[0-9]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating pre-end-price-container">
+                                                            <input type="text" class="form-control pre-end-price">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                секция мусора-->
+                                            
+
+                                                <div class="row type-row text-center mt-5">
+                                                    <div class="col-sm-7"></div>
+                                                        <div class="col-sm-2">
+                                                            <div class="approximate-duration-container hidden">Часы:</div>
+                                                        </div>
+                                                    <div class="col-sm-2">Итого (руб. с НДС):</div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-sm-2 col-sm-offset-7">
+                                                        <div class="form-group label-floating approximate-duration-container hidden">
+                                                            <input type="number" min="1" max="24" step="1" class="form-control approximate-duration" placeholder="Введите часы:">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group label-floating">
+                                                            <input type="text" class="form-control end-price" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row no-print">
+                                                    <div class="col-sm-2 col-sm-offset-7 text-justify">
+                                                        <small class="info-text red hidden">Ориентировочное время на выполнение в часах, БЕЗ учета нестандартных операций: <span id=approx-time></span></small>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="row mt-5 no-print">
+                                                    <div class="col-sm-12">
+                                                        <h4 class="info-header text-center">Клиенты с технической поддержкой:</h4>
+                                                    </div>
+                                                    <div class="col-sm-12 text-center">
+                                                        <p>
+                                                            Айньюс (Нейрон) - тариф "Продвинутый"<br>
+                                                            Старт / Старт2 - тариф "Продвинутый"<br>
+                                                            Гибрид - тариф "Начальный+"<span class="tooltip-decoration" tooltip="Добавлены 10 модернизаций серверов в месяц">(с нюансами)</span><br>
+                                                            Глобус-Телеком - тариф "Начальный+"<br>
+                                                            Паллада Веб Сервис (ПВС) - тариф "Продвинутый"<br>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row mt-5">
+                                                    <div class="col-sm-10 col-sm-offset-1">
+                                                        <small>
+                                                            <p>•	HotSwap включает в себя замену соответствующих жестких дисков и блоков питания.</p>
+                                                            <p>•	Модернизация сервера представляет собой замену/добавление/извлечение внутренних комплектующих оборудования.</p>
+                                                            <p>•	Стоимость вывоза более 10 коробок оговаривается отдельно.</p>
+                                                            <p>•	Максимальное количество розничных операций – не более пяти. В случае шести и более операций, расчет стоимости работы происходит исходя из почасовой тарификации. </p>
+                                                            <p class="no-print">•	Время для почасовой тарификации указано ориентировочно, возможны отклонения как в большую, так и в меньшую стороны.</p>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tab-pane" id="rate-info">
+                                            <div class="row">
+                                                <h4 class="info-text text-center"> Описание тарифов технической поддержки:</h4>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="form-text text-muted text-justify mt-3">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <p>
+                                                                        Тариф "Начальный":
+                                                                    </p>
+                                                                    <small>
+                                                                        <p>
+                                                                            •	Включение/выключение/перезагрузка оборудования; <br>
+                                                                            •	проверка индикации; <br>
+                                                                            •	проверка патчкордов, переключение патчкордов; <br>
+                                                                            •	подключение USB устройств; <br>
+                                                                            •	подключение IP KVM до 5 часов в месяц (суммарно); <br>
+                                                                            •	время реакции 15 - 20 минут. <br>
+                                                                            Стоимость: бесплатно.
+                                                                        </p>
+                                                                    </small>
+                                                                    
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <p>
+                                                                        Тариф "Начальный+":
+                                                                    </p>
+                                                                    <small>
+                                                                        <p>
+                                                                            •	все операции тарифа «Начальный»; <br>
+                                                                            •	замена HDD / блоков питания hot swap: до 10 замен в месяц (при условии предоставления дисков/переходников/блоков питания) согласно техническому заданию заказчика; <br>
+                                                                            •	подключение KVM до 24 часов в месяц (суммарно). <br>
+                                                                            
+                                                                            Стоимость: 5040 руб. с НДС.
+                                                                        </p>
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <p>
+                                                                        Тариф "Расширенный":
+                                                                    </p>
+                                                                    <small>
+                                                                        <p>
+                                                                            •	все операции тарифа «Начальный»; <br>
+                                                                            •	замена HDD / блоков питания hot swap: до 20 замен в месяц (при условии предоставления дисков/переходников/блоков питания) согласно техническому заданию заказчика; <br>
+                                                                            •	замена комплектующих, требующих вскрытия сервера (RAM, процессоров, блоков питания, HDD и прочих комплектующих) согласно техническому заданию заказчика: до 5 замен в месяц; <br>
+                                                                            •	запись дисков, образов (при условии предоставления ссылки на необходимый образ); <br>
+                                                                            •	предоставление IP KVM без ограничений; <br>
+                                                                            •	предоставление персональной ячейки для хранения ЗИПа;<br>
+                                                                            •	монтаж / демонтаж оборудования в стойку (до 5 единиц в месяц);<br>
+                                                                            •	коммутация оборудования в стойке, при условии представления заказчиком кабелей и карты подключения; <br>
+                                                                            •	повторный обжим кабеля типа UTP при его повреждении. <br>
+                                                                            
+                                                                            Стоимость: 15000 руб. с НДС.
+                                                                        </p>
+                                                                    </small>
+                                                                </div>
+                                                                <div class="col-sm-6 mt-5">
+                                                                    <p>
+                                                                        Тариф "Продвинутый":
+                                                                    </p>
+                                                                    <small>
+                                                                        <p>
+                                                                            •	все операции тарифа «Расширенный»; <br>
+                                                                            •	замена комплектующих требующих вскрытия сервера (RAM, процессоров, блоков питания, HDD и прочих комплектующих) согласно техническому заданию заказчика; <br>
+                                                                            •	установка ОС согласно техническому заданию заказчика (при условии предоставления ссылки на необходимый образ); <br>
+                                                                            •	настройка BIOS согласно техническому заданию заказчика; <br>
+                                                                            •	настройка сетевых устройств согласно техническому заданию заказчика; <br>
+                                                                            •	настройка сетевых интерфейсов согласно техническому заданию заказчика; <br>
+                                                                            
+                                                                            Стоимость: договорная.
+                                                                        </p>
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="text-center mt-5">
+                <p>Прайс-лист и доп. информация (23 KB.):</p>
+            </div>
+            
+            <div class="upload upload-wrapper">
+                <div class="path">
+                    <div class="arrow"></div>
+                    <svg>
+                        <use xlink:href="#path">
+                        </svg>
+                    </div>
+                    <div class="circle">
+                        <div class="water">
+                            <svg>
+                                <use xlink:href="#wave">
+                                </svg>
+                                <svg>
+                                    <use xlink:href="#wave">
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <svg>
+                            <symbol viewBox="0 0 72 72" id="path">
+                                <path d="M36,25.12 L36,43.68 C36,53.3185944 31.52,56.7319277 22.56,53.92 C9.12,49.7021084 4,44.5565697 4,36 C4,18.72 18.72,4 36,4 C53.28,4 68,18.72 68,36 C68,53.28 53.28,68 36,68 C18.72,68 4,53.28 4,36 C4,18.72 18.72,4 36,4 C53.28,4 68,18.72 68,36 C68,53.28 53.28,68 36,68 C18.72,68 4,53.28 4,36 C4,18.72 18.72,4 36,4 C43.2533333,4 49.8789797,6.40627283 55.876939,11.2188185 L32.7391444,45.2477592 L23.8653488,38.1626948"></path>
+                            </symbol>
+                            <symbol viewBox="0 0 116 6" id="wave">
+                                <path d="M58,0 C70.6086957,0 79.3822464,6 87,6 L58,6 L29,6 C36.6177536,6 45.3913043,0 58,0 Z M0,0 C12.6086957,0 21.3822464,6 29,6 L0,6 L0,0 Z M116,0 L116,6 L87,6 C94.6177536,6 103.391304,0 116,0 Z"></path>
+                            </symbol>
+                            <text>Скачать прайс-лист</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+                    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+                    crossorigin="anonymous"></script>
+                    <script src="js/barba.min.js"></script>
+                    <script src="js/def.js"></script>
+                    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+                    <script src="assets/js/jquery.bootstrap.js" type="text/javascript"></script>
+                    <script src="assets/js/material-bootstrap-wizard.js"></script>
+                    <script src="assets/js/jquery.validate.min.js"></script>
+                    <script src="js/print.min.js" type="text/javascript"></script>
+                    <script>
+                        $('#printButton').on("click", function () {
+                            $('#printWrapper').print({
+                                globalStyles: true,
+                                stylesheet: "css/print.css",
+                                noPrintSelector: ".no-print",
+                                iframe: true,
+                                prepend: "#printTitle",
+                                manuallyCopyFormValues: true,
+                                deferred: $.Deferred(),
+                                title: 'StoreData LLC',
+                                doctype: '<!doctype html>'
+                            });
+                        });
+                    </script>
+                    
+                    <script>
+                        $(function () {
+                            $("#packageRemove").click(function () {
+                                if ($(this).is(":checked")) {
+                                    $(".package-remove").show(500);
+                                } else {
+                                    $(".package-remove").hide(1000);
+                                }
+                            });
+                        });
+                    </script>
+                    
+                    <script>
+                        $('.upload').on('click touch', function(e) {
+                            
+                            e.preventDefault();
+                            window.location.href = 'assets/attach/price-list.docx';
+                            var self = $(this);
+                            
+                            self.addClass('loading');
+                            setTimeout(function() {
+                                self.removeClass('loading');
+                            }, 4200)
+                            
+                        });
+                    </script>
+                    
+                    <script>
+                        $(function () {
+                            const PRICE_PER_HOUR = 3000;
+                            const MAX_RETAIL_OPERATIONS = 5;
+                            
+                            $(".service-type").change(function onServiceTypeChange() {
+                                let value = $(this).val();
+                                let $priceRow = $getPriceRow(this);
+                                var $priceRowsCount = $(".price-row").length;
+                                
+                                if (!value) {
+                                    if ($priceRowsCount > 1) {
+                                        $priceRow.remove();
+                                        updateEndPrice();
+                                    } else {
+                                        resetPriceRow($priceRow);
+                                    }
+                                    return;
+                                }
+                                
+                                updateCostPerService($priceRow, value);
+                                updatePreEndPrice($priceRow);
+                                
+                                if ($priceRow.is(".price-row:last")) {
+                                    resetPriceRow($priceRow.clone(true)).insertAfter($priceRow);
+                                    $(".price-row:last").addClass("no-print");
+                                    $(".price-row:last").prev().removeClass("no-print");
+                                }
+                            });
+                            
+                            function resetPriceRow($priceRow) {
+                                $getCostPerService($priceRow).val("");
+                                $getOperationCount($priceRow).val("");
+                                $getPreEndPrice($priceRow).val("");
+                                return $priceRow;
+                            }
+                            
+                            function updateCostPerService($priceRow, value) {
+                                $getCostPerService($priceRow).val(value);
+                            }
+                            
+                            $(".operation-count").on("input", function () {
+                                updatePreEndPrice($getPriceRow(this));
+                                updateEndPrice();
+                            });
+                            
+                            function updatePreEndPrice($priceRow) {
+                                let operationCount = $getOperationCount($priceRow).val();
+                                let $serviceType = $getServiceType($priceRow);
+                                
+                                $getPreEndPrice($priceRow).val((operationCount * $serviceType.val()) || 0);
+                            }
+                            
+                            function isWholesale() {
+                                return getOperationsCount() > MAX_RETAIL_OPERATIONS;
+                            }
+                            
+                            function getOperationsCount() {
+                                return getValueSummary($(".operation-count"));
+                            }
+                            
+                            function updateEndPrice() {
+                                isWholesale() ? setWholesaleMode() : setRetailMode();
+                                calculateEndPrice();
+                            }
+                            
+                            function calculateEndPrice() {
+                                if (isWholesale()) {
+                                    $getEndPrice().val(($getApproximateDuration().val() * PRICE_PER_HOUR) || 0);
+                                } else {
+                                    $getEndPrice().val(getPreEndPriceSummary());
+                                }
+                            }
+                            
+                            function getPreEndPriceSummary() {
+                                return getValueSummary($(".pre-end-price"));
+                            }
+                            
+                            function getValueSummary($selector) {
+                                return $selector.map(function () {
+                                    return $(this).val()
+                                }).get().reduce((p, n) => p + Number(n), 0);
+                            }
+                            
+                            $getApproximateDuration().on("input", function () {
+                                calculateEndPrice();
+                            });
+                            
+                            function $getPriceRow(item) {
+                                return $(item).closest(".price-row");
+                            }
+                            
+                            function $getServiceType($priceRow) {
+                                return $priceRow.find(".service-type");
+                            }
+                            
+                            function $getCostPerService($priceRow) {
+                                return $priceRow.find(".cost-per-service");
+                            }
+                            
+                            function $getOperationCount($priceRow) {
+                                return $priceRow.find(".operation-count");
+                            }
+                            
+                            function $getPreEndPrice($priceRow) {
+                                return $priceRow.find(".pre-end-price");
+                            }
+                            
+                            function $getApproximateDuration() {
+                                return $(".approximate-duration");
+                            }
+                            
+                            function $getEndPrice() {
+                                return $(".end-price");
+                            }
+                            
+                            function setRetailMode() {
+                                $(".cost-per-service-container").fadeTo( "slow" , 1);
+                                $(".pre-end-price-container").fadeTo( "slow" , 1);
+                                $(".approximate-duration-container").fadeTo("slow",1).addClass("hidden");
+                                $(".info-text").fadeOut("slow").addClass("hidden");
+                            }
+                            
+                            function setWholesaleMode() {
+                                $(".cost-per-service-container").fadeTo("slow", 0.2);
+                                $(".pre-end-price-container").fadeTo("slow", 0.2);
+                                $(".approximate-duration-container").val("").fadeIn("slow").removeClass("hidden");
+                                $(".info-text").fadeIn("slow").removeClass("hidden");
+                                $("#approx-time").text(Math.ceil(getOperationsCount()/MAX_RETAIL_OPERATIONS));
+                            }
+                        })
+                    </script>
+                    <script src="js/connectivity-check.js"></script>
+                    <script src="js/barba.js"></script>
+                    <script src="js/def.js"></script>
+                </body>
+                </html>
+                

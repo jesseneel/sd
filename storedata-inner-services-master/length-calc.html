@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <title>StoreData Inner Service | Расчет расстояния между стойками</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+  crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="css/shards.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/assets/favicon/manifest.json" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+
+  <!-- notification container -->
+  <div class=" alert-danger notification text-center" id="notification" role="alert" aria-live="assertive"
+  aria-relevant="text" hidden></div>
+  <div id="barba-wrapper">
+    <div class="barba-container">
+  
+  <nav>
+    <div class="nav-toggle"> 
+      <input type="checkbox" />
+      <span></span> <span></span> <span></span> 
+      <ul class="nav-menu">
+        <a href="index.html">
+          <li>На главную</li>
+        </a> <a href="length-calc.html">
+          <li>Расчет расстояний СЛ</li>
+        </a> <a href="crossing-price.html">
+          <li>Расчет стоимости СЛ</li>
+        </a> <a href="technical-support.html">
+          <li>Расчет услуг ТП</li>
+        </a>
+        <div class="row mt-5 text-center">
+          <div class="col-sm-12">
+            <p class="nav-info">STD | Inner Service</p>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- noscript -->
+  <noscript>
+    <style>
+      .container {
+        display: none;
+      }
+    </style>
+    <div class="noscript-wrapper">
+      <div ontouchstart="this.classList.toggle('hover');">
+        <div class="noscript-container">
+          <div class="noscript-front" style="background-image: url(https://unsplash.it/500/500/)">
+            <div class="noscript-inner">
+              <p>Отключен JavaScript или используется блокировка сценариев Noscript</p>
+              <span class="noscript-description">Наведите чтобы узнать подробности</span>
+            </div>
+          </div>
+          <div class="noscript-back">
+            <div class="noscript-inner noscript-info">
+              <p>Для корректной работы страниц включите использование JavaScript в настройках своего браузера и
+                перезагрузите страницу.</p>
+                <ul>
+                  <li>[Chrome]: "Customize and control Google Chrome" -> "Settings" -> "Show advanced settings" ->
+                    "Privacy" -> "Content settings" -> "JavaScript" -> "Allow all sites to run JavaScript"</li>
+                    <li>[Opera]: "Menu" -> "Settings" -> "Websites" -> "Allow all sites to run JavaScript"</li>
+                    <li>[Safari]: "Edit" -> "Preferences" -> "Security" -> "Web content" -> "Enable JavaScript"</li>
+                    <li>[Mozila]: "Menu" -> "Settings" -> "Content" -> "Enable JavaScript"</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </noscript>
+      
+      <div class="container mt-5 w-50">
+        <div class="row">
+          <div class="col-md-4 col-centered">
+            <select class="form-control mb-4">
+              <option>unavailable now</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="custom-control custom-toggle my-2 text-center col-md-4 col-centered">
+            <input type="checkbox" id="Toggle1" name="Toggle1" class="custom-control-input text-center" />
+            <label class="custom-control-label text-center" for="Toggle1">Нестандартный запас</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-centered mt-3">
+            <div id="shards-custom-slider-start">
+              <input type="hidden" class="custom-slider-input" name="custom-slider-value" />
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-5">
+          <div class="col-md-4 col-centered">
+            <select class="form-control mb-4">
+              <option>unavailable now</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="custom-control custom-toggle my-2 text-center col-md-4 col-centered">
+            <input type="checkbox" id="Toggle2" name="Toggle2" class="custom-control-input text-center" />
+            <label class="custom-control-label text-center" for="Toggle2">Нестандартный запас</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-centered mt-3">
+            <div id="shards-custom-slider-end">
+              <input type="hidden" class="custom-slider-input" name="custom-slider-value" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center mt-5">
+            <p class="result">unavailable</p>
+            <button type="button" class="btn btn-outline-info btn-pill">
+              К стоимости
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+      <script src="js/shards.js"></script>
+      <!-- JavaScript -->
+      <script>
+        jQuery("#shards-custom-slider-start").customSlider({
+          start: [1],
+          tooltips: [true],
+          connect: true,
+          range: {
+            min: 0,
+            max: 10
+          }
+        });
+      </script>
+      <script>
+        jQuery("#shards-custom-slider-end").customSlider({
+          start: [1],
+          tooltips: [true],
+          connect: true,
+          range: {
+            min: 0,
+            max: 10
+          }
+        });
+      </script>
+      <script src="js/connectivity-check.js"></script>
+      <script src="js/barba.min.js"></script>
+      <script src="js/def.js"></script>
+    </body>
+    
+    </html>
